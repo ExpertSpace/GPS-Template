@@ -20,10 +20,12 @@ public class MainActivity extends AppCompatActivity {
     private TextView tvOnOffGPS;
     private TextView tvOnOffNetWork;
     private TextView tvLength;
+    private TextView tvSpeed;
 
     private LocationManager locationManager;
 
     double latGPS = 0, lonGPS = 0, latNW = 0, lonNW = 0, length = 0, x, y;
+    int speed = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         tvOnOffGPS = findViewById(R.id.tvOnOffGPS);
         tvOnOffNetWork = findViewById(R.id.tvOnOffNetWork);
         tvLength = findViewById(R.id.tvLength);
+        tvSpeed = findViewById(R.id.tvSpeed);
 
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 
@@ -85,6 +88,10 @@ public class MainActivity extends AppCompatActivity {
 
             latGPS = location.getLatitude();
             lonGPS = location.getLongitude();
+
+            speed = (int) location.getSpeed();
+            //tvSpeed.setText("Скорость\nм/с:  " + speed + "\nкм/ч: " + speed * 3.6);
+            tvSpeed.setText(Integer.toString(speed));
         }
         if (location.getProvider().equals(LocationManager.NETWORK_PROVIDER)) {
             tvNetWork.setText(location.getLatitude() + "\n" + location.getLongitude());

@@ -9,8 +9,9 @@
     <TextView
         android:id="@+id/GPS"
         android:layout_width="wrap_content"
-        android:layout_height="50sp"
+        android:layout_height="60sp"
         android:hint="GPS"
+        android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.598"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -21,9 +22,10 @@
     <TextView
         android:id="@+id/NetWork"
         android:layout_width="wrap_content"
-        android:layout_height="50sp"
+        android:layout_height="60sp"
         android:layout_marginTop="16dp"
         android:hint="Network"
+        android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="@+id/GPS"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/GPS"
@@ -32,9 +34,10 @@
     <TextView
         android:id="@+id/onOffGPS"
         android:layout_width="wrap_content"
-        android:layout_height="50sp"
+        android:layout_height="60sp"
         android:layout_marginTop="16dp"
         android:hint="on/off GPS"
+        android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="@+id/NetWork"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/NetWork"
@@ -43,19 +46,33 @@
     <TextView
         android:id="@+id/onOffNetWork"
         android:layout_width="wrap_content"
-        android:layout_height="50sp"
+        android:layout_height="60sp"
         android:layout_marginTop="16dp"
         android:hint="on/off NetWork"
+        android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="@+id/onOffGPS"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/onOffGPS"
         app:layout_constraintTop_toBottomOf="@+id/onOffGPS" />
 
     <TextView
+        android:id="@+id/speed"
+        android:layout_width="wrap_content"
+        android:layout_height="60sp"
+        android:layout_marginTop="16dp"
+        android:hint="Speed"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="@+id/onOffNetWork"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/onOffNetWork"
+        app:layout_constraintTop_toBottomOf="@+id/onOffNetWork" />
+
+    <TextView
         android:id="@+id/tvGPS"
         android:layout_width="150sp"
-        android:layout_height="50sp"
+        android:layout_height="60sp"
         android:text=""
+        android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="@+id/GPS"
         app:layout_constraintEnd_toStartOf="@+id/GPS"
         app:layout_constraintHorizontal_bias="0.652"
@@ -66,9 +83,10 @@
     <TextView
         android:id="@+id/tvNetWork"
         android:layout_width="150sp"
-        android:layout_height="50sp"
+        android:layout_height="60sp"
         android:layout_marginTop="16dp"
         android:text=""
+        android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="@+id/tvGPS"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/tvGPS"
@@ -77,9 +95,10 @@
     <TextView
         android:id="@+id/tvOnOffGPS"
         android:layout_width="150sp"
-        android:layout_height="50sp"
+        android:layout_height="60sp"
         android:layout_marginTop="16dp"
         android:text=""
+        android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="@+id/tvNetWork"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/tvNetWork"
@@ -88,9 +107,10 @@
     <TextView
         android:id="@+id/tvOnOffNetWork"
         android:layout_width="150sp"
-        android:layout_height="50sp"
+        android:layout_height="60sp"
         android:layout_marginTop="16dp"
         android:text=""
+        android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="@+id/tvOnOffGPS"
         app:layout_constraintStart_toStartOf="@+id/tvOnOffGPS"
         app:layout_constraintTop_toBottomOf="@+id/tvOnOffGPS" />
@@ -98,10 +118,24 @@
     <TextView
         android:id="@+id/tvLength"
         android:layout_width="wrap_content"
-        android:layout_height="50sp"
+        android:layout_height="60sp"
         android:text=""
+        android:textSize="25sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/onOffNetWork"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvSpeed"
+        app:layout_constraintVertical_bias="0.49" />
+
+    <TextView
+        android:id="@+id/tvSpeed"
+        android:layout_width="150sp"
+        android:layout_height="60sp"
+        android:layout_marginTop="16dp"
+        android:text=""
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="@+id/tvOnOffNetWork"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/tvOnOffNetWork"
         app:layout_constraintTop_toBottomOf="@+id/tvOnOffNetWork" />
 
