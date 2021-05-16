@@ -7,6 +7,7 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -78,9 +79,30 @@ public class MainActivity extends AppCompatActivity {
                 }, LOCATION_PERMISSION);
     }
 
-    @SuppressLint({"SetTextI18n", "DefaultLocale"})
-    private void showLocation(Location location) {
+    private void getSpeed(Location location) throws InterruptedException {
+        long timeStart, timeEnd = 0, timeElapsed;
 
+        if(location == null)
+            return;
+
+        if(location.getProvider().equals(LocationManager.GPS_PROVIDER) && location.hasSpeed()){
+
+            timeStart = location.getTime();
+            if(length != length)
+            timeEnd = location.getTime();
+
+            timeElapsed = (timeEnd - timeStart) / 1000 ;
+
+            Log.d("TEST", String.valueOf(timeElapsed));
+
+            speed = (int) (length / timeElapsed);
+
+            tvSpeed.setText(Integer.toString(speed));
+        }
+    }
+
+
+    private void distance(Location location){
         if (location == null)
             return;
         if (location.getProvider().equals(LocationManager.GPS_PROVIDER)) {
@@ -88,10 +110,6 @@ public class MainActivity extends AppCompatActivity {
 
             latGPS = location.getLatitude();
             lonGPS = location.getLongitude();
-
-            speed = (int) location.getSpeed();
-            //tvSpeed.setText("Скорость\nм/с:  " + speed + "\nкм/ч: " + speed * 3.6);
-            tvSpeed.setText(Integer.toString(speed));
         }
         if (location.getProvider().equals(LocationManager.NETWORK_PROVIDER)) {
             tvNetWork.setText(location.getLatitude() + "\n" + location.getLongitude());
@@ -106,6 +124,12 @@ public class MainActivity extends AppCompatActivity {
         length = Math.sqrt(x + y) * 6371000;
 
         tvLength.setText(String.format("Разница: %.2f метров", length));
+    }
+
+    @SuppressLint({"SetTextI18n", "DefaultLocale"})
+    private void showLocation(Location location) throws InterruptedException {
+        distance(location);
+        getSpeed(location);
     }
 
     @SuppressLint("SetTextI18n")
@@ -124,7 +148,11 @@ public class MainActivity extends AppCompatActivity {
     private final LocationListener locationListener = new LocationListener() {
         @Override
         public void onLocationChanged(@NonNull Location location) {
-            showLocation(location);
+            try {
+                showLocation(location);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
 
         @Override
